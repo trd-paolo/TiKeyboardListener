@@ -58,10 +58,27 @@
                                                  selector:@selector(keyboardWillHide:) 
                                                      name:UIKeyboardWillHideNotification 
                                                    object:nil];	
+
+        currentHeight = -1;
     }
 }
 
 #pragma Keyboard listener
+
+-(void)fireKeyboardEvent
+{
+    if (!showEvent) {
+        [ourProxy setHeight:kTiBehaviorFill];
+    }
+    
+    if ( (showEvent && [ourProxy _hasListeners:@"keyboard:show"]) || (!showEvent && [ourProxy _hasListeners:@"keyboard:hide"]) ) {
+        CGRect frame = self.frame;
+        NSMutableDictionary* event = [NSMutableDictionary dictionary];
+        [event setObject:NUMFLOAT(keyboardHeight) forKey:@"keyboardHeight"];
+        [event setObject:NUMFLOAT(frame.size.height) forKey:@"height"];
+        [ourProxy fireEvent:showEvent ? @"keyboard:show" : @"keyboard:hide" withObject:event];
+    }
+}
 
 -(void)keyboardWillShow:(NSNotification*)note
 {
@@ -74,8 +91,8 @@
     
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     BOOL portrait = orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown;
-    float keyboardHeight = portrait ? keyboardFrameEnd.size.height : keyboardFrameEnd.size.width;
-    
+    keyboardHeight = portrait ? keyboardFrameEnd.size.height : keyboardFrameEnd.size.width;
+
     int way;
     // APPEARS FROM BOTTOM TO TOP
     if (portrait && keyboardFrameBegin.origin.x == keyboardFrameEnd.origin.x) { 
@@ -92,41 +109,42 @@
         way = 3;
     }
     
+    if (currentHeight < 0 || currentHeight != self.frame.size.height) {
+        currentHeight = self.superview.frame.size.height;
+    }
+    currentHeight -= keyboardHeight;
+    
     if (way < 2) {
-        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|curve animations:^{
-            CGRect frame = self.frame;
-            frame.size.height = self.superview.frame.size.height - keyboardHeight;
-            
-            [TiUtils setView:self positionRect:frame];
-            [ourProxy setHeight:NUMFLOAT(frame.size.height)];
-        } completion:^(BOOL finished) {
-            if ([ourProxy _hasListeners:@"keyboard:show"]) {
-                CGRect frame = self.frame;
-                NSMutableDictionary* event = [NSMutableDictionary dictionary];
-                [event setObject:NUMFLOAT(keyboardHeight) forKey:@"keyboardHeight"];
-                [event setObject:NUMFLOAT(frame.size.height) forKey:@"height"];
-                [ourProxy fireEvent:@"keyboard:show" withObject:event];
-            }
-        }];
+        NSMutableDictionary* anim = [NSMutableDictionary dictionary];
+        [anim setObject:NUMFLOAT(currentHeight) forKey:@"height"];
+        [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+        
+        [ourProxy animate:anim];
+        
+        showEvent = YES;
+        [self performSelector:@selector(fireKeyboardEvent)
+                   withObject:self
+                   afterDelay:duration];
     }
     else {
         CGRect frame = self.frame;
-        frame.size.height = self.superview.frame.size.height - keyboardHeight;
+        frame.size.height = currentHeight;
         
         [TiUtils setView:self positionRect:frame];
-        [ourProxy setHeight:NUMFLOAT(frame.size.height)];
+        [ourProxy setHeight:NUMFLOAT(currentHeight)];
         
         if ([ourProxy _hasListeners:@"keyboard:show"]) {
             NSMutableDictionary* event = [NSMutableDictionary dictionary];
             [event setObject:NUMFLOAT(keyboardHeight) forKey:@"keyboardHeight"];
-            [event setObject:NUMFLOAT(frame.size.height) forKey:@"height"];
+            [event setObject:NUMFLOAT(currentHeight) forKey:@"height"];
             [ourProxy fireEvent:@"keyboard:show" withObject:event];
         }
     }
 }
 
 -(void)keyboardWillHide:(NSNotification *)note
-{
+{    
+    
     NSDictionary* userInfo = note.userInfo;
     NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     UIViewAnimationCurve curve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
@@ -136,7 +154,9 @@
     
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     BOOL portrait = orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown;    
-    float keyboardHeight = portrait ? keyboardFrameEnd.size.height : keyboardFrameEnd.size.width;
+    keyboardHeight = portrait ? keyboardFrameEnd.size.height : keyboardFrameEnd.size.width;
+
+    currentHeight += keyboardHeight;
     
     int way;
     // APPEARS FROM BOTTOM TO TOP
@@ -155,25 +175,20 @@
     }
     
     if (way < 2) {
-        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|curve animations:^{
-            CGRect frame = self.frame;
-            frame.size.height = self.superview.frame.size.height;
-            
-            [TiUtils setView:self positionRect:frame];
-            [ourProxy setHeight:kTiBehaviorFill];
-        } completion:^(BOOL finished){
-            CGRect frame = self.frame;
-            if ([ourProxy _hasListeners:@"keyboard:hide"]) {
-                NSMutableDictionary* event = [NSMutableDictionary dictionary];
-                [event setObject:NUMFLOAT(keyboardHeight) forKey:@"keyboardHeight"];
-                [event setObject:NUMFLOAT(frame.size.height) forKey:@"height"];
-                [ourProxy fireEvent:@"keyboard:hide" withObject:event];
-            }
-        }];
+        NSMutableDictionary* anim = [NSMutableDictionary dictionary];
+        [anim setObject:NUMFLOAT(currentHeight) forKey:@"height"];
+        [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+        
+        [ourProxy animate:anim];
+        
+        showEvent = NO;
+        [self performSelector:@selector(fireKeyboardEvent)
+                   withObject:self
+                   afterDelay:duration];
     }
     else {
         CGRect frame = self.frame;
-        frame.size.height = self.superview.frame.size.height;
+        frame.size.height = currentHeight;
         
         [TiUtils setView:self positionRect:frame];
         [ourProxy setHeight:kTiBehaviorFill];
@@ -181,7 +196,7 @@
         if ([ourProxy _hasListeners:@"keyboard:hide"]) {
             NSMutableDictionary* event = [NSMutableDictionary dictionary];
             [event setObject:NUMFLOAT(keyboardHeight) forKey:@"keyboardHeight"];
-            [event setObject:NUMFLOAT(frame.size.height) forKey:@"height"];
+            [event setObject:NUMFLOAT(currentHeight) forKey:@"height"];
             [ourProxy fireEvent:@"keyboard:hide" withObject:event];
         }
     }

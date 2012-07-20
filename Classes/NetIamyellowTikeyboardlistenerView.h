@@ -19,6 +19,9 @@
 
 @interface NetIamyellowTikeyboardlistenerView : TiUIView {
     NetIamyellowTikeyboardlistenerViewProxy* ourProxy;
+    float keyboardHeight;
+    BOOL showEvent;
+    float currentHeight;
 }
 
 @end
