@@ -8,7 +8,9 @@ var keyboardListener = require('net.iamyellow.tikeyboardlistener');
 
 // window
 var win = Ti.UI.createWindow({
+	navBarHidden: true
 });
+//win.orientationModes = [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT];
 
 // the container view which should be resized
 var container = keyboardListener.createView({
@@ -62,5 +64,14 @@ blurBtn.addEventListener('click', function () {
 
 // ****************************************************************************************************************
 // start the show
-
 win.open();
+
+/*var tabGroup = Titanium.UI.createTabGroup(),
+tab = Titanium.UI.createTab({
+	icon: 'KS_nav_views.png',
+	title: 'Tab 1',
+	window: win
+});
+tabGroup.addTab(tab);
+tabGroup.open();
+*/

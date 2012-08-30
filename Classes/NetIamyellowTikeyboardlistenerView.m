@@ -15,6 +15,8 @@
 //
 
 #import "NetIamyellowTikeyboardlistenerView.h"
+#import "TiUIWindow.h"
+#import "TiUIWindowProxy.h"
 
 @implementation NetIamyellowTikeyboardlistenerView
 
@@ -48,7 +50,7 @@
         [TiUtils setView:self positionRect:frame];
         [ourProxy setTop:NUMINT(0)];
         [ourProxy setHeight:kTiBehaviorFill];
-        
+                
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillShow:) 
                                                      name:UIKeyboardWillShowNotification 
@@ -114,10 +116,37 @@
     }
     currentHeight -= keyboardHeight;
     
+    // take into account navigation bar height and tabbar
+    id parentWindow = self.superview;
+    while (![parentWindow isKindOfClass:[TiUIWindow class]]) {
+        parentWindow = ((UIView*)parentWindow).superview;
+    }
+    TiUIWindowProxy* parentWindowProxy = (TiUIWindowProxy*)((TiUIWindow*)parentWindow).proxy;
+    CGFloat navBarHeight = 0.0f;
+    if (!parentWindowProxy.navController.navigationBarHidden) {
+        navBarHeight = parentWindowProxy.navController.navigationBar.frame.size.height;
+    }
+    
+    CGFloat tabbarHeight;
+    if (portrait) {
+        tabbarHeight = [[UIScreen mainScreen] applicationFrame].size.height - self.superview.frame.size.height;
+    }
+    else {
+        tabbarHeight = [[UIScreen mainScreen] applicationFrame].size.width - self.superview.frame.size.height;
+    }
+    currentHeight += tabbarHeight - navBarHeight;
+    
     if (way < 2) {
         NSMutableDictionary* anim = [NSMutableDictionary dictionary];
         [anim setObject:NUMFLOAT(currentHeight) forKey:@"height"];
-        [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+        
+        if (tabbarHeight != 0) {
+            [anim setObject:NUMFLOAT((duration * 1000) - 50) forKey:@"duration"];
+            [anim setObject:NUMFLOAT(50) forKey:@"delay"];
+        }
+        else {
+            [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+        }
         
         [ourProxy animate:anim];
         
@@ -158,6 +187,27 @@
 
     currentHeight += keyboardHeight;
     
+
+    // take into account navigation bar height and tabbar
+    id parentWindow = self.superview;
+    while (![parentWindow isKindOfClass:[TiUIWindow class]]) {
+        parentWindow = ((UIView*)parentWindow).superview;
+    }
+    TiUIWindowProxy* parentWindowProxy = (TiUIWindowProxy*)((TiUIWindow*)parentWindow).proxy;
+    CGFloat navBarHeight = 0.0f;
+    if (!parentWindowProxy.navController.navigationBarHidden) {
+        navBarHeight = parentWindowProxy.navController.navigationBar.frame.size.height;
+    }
+    
+    CGFloat tabbarHeight;
+    if (portrait) {
+        tabbarHeight = [[UIScreen mainScreen] applicationFrame].size.height - self.superview.frame.size.height;
+    }
+    else {
+        tabbarHeight = [[UIScreen mainScreen] applicationFrame].size.width - self.superview.frame.size.height;
+    }
+    currentHeight -= tabbarHeight + navBarHeight;
+    
     int way;
     // APPEARS FROM BOTTOM TO TOP
     if (portrait && keyboardFrameBegin.origin.x == keyboardFrameEnd.origin.x) { 
@@ -177,7 +227,13 @@
     if (way < 2) {
         NSMutableDictionary* anim = [NSMutableDictionary dictionary];
         [anim setObject:NUMFLOAT(currentHeight) forKey:@"height"];
-        [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+
+        if (tabbarHeight != 0) {
+            [anim setObject:NUMFLOAT((duration * 1000) - 50) forKey:@"duration"];
+        }
+        else {
+            [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+        }
         
         [ourProxy animate:anim];
         
