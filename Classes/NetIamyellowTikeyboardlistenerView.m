@@ -18,6 +18,9 @@
 #import "TiUIWindow.h"
 #import "TiUIWindowProxy.h"
 
+#import "TiUIScrollView.h"
+#import "TiUIScrollViewProxy.h"
+
 @implementation NetIamyellowTikeyboardlistenerView
 
 #pragma mark Cleanup 
@@ -59,8 +62,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillHide:) 
                                                      name:UIKeyboardWillHideNotification 
-                                                   object:nil];	
-
+                                                   object:nil];
+        
         currentHeight = -1;
     }
 }
@@ -137,18 +140,32 @@
     currentHeight += tabbarHeight - navBarHeight;
     
     if (way < 2) {
-        NSMutableDictionary* anim = [NSMutableDictionary dictionary];
-        [anim setObject:NUMFLOAT(currentHeight) forKey:@"height"];
-        
-        if (tabbarHeight != 0) {
-            [anim setObject:NUMFLOAT((duration * 1000) - 50) forKey:@"duration"];
-            [anim setObject:NUMFLOAT(50) forKey:@"delay"];
+        // if the first child is a scroll view, animate the contentInset to avoid unwanted jumps
+        id possibleScrollView = [[self subviews] objectAtIndex:0];
+        if ([possibleScrollView isKindOfClass:[TiUIScrollView class]]) {
+            [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|curve animations:^{
+                TiUIScrollViewImpl* sv = [(TiUIScrollView*)possibleScrollView scrollView];
+                UIEdgeInsets newInset = sv.contentInset;
+                newInset.bottom = keyboardHeight - tabbarHeight;
+                sv.contentInset = newInset;
+                [sv setScrollIndicatorInsets:newInset];
+            } completion:^(BOOL finished) {
+            }];
         }
         else {
-            [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+            NSMutableDictionary* anim = [NSMutableDictionary dictionary];
+            [anim setObject:NUMFLOAT(currentHeight) forKey:@"height"];
+            
+            if (tabbarHeight != 0) {
+                [anim setObject:NUMFLOAT((duration * 1000) - 50) forKey:@"duration"];
+                [anim setObject:NUMFLOAT(50) forKey:@"delay"];
+            }
+            else {
+                [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+            }
+            
+            [ourProxy animate:anim];
         }
-        
-        [ourProxy animate:anim];
         
         showEvent = YES;
         [self performSelector:@selector(fireKeyboardEvent)
@@ -156,12 +173,25 @@
                    afterDelay:duration];
     }
     else {
-        CGRect frame = self.frame;
-        frame.size.height = currentHeight;
-        
-        [TiUtils setView:self positionRect:frame];
-        [ourProxy setHeight:NUMFLOAT(currentHeight)];
-        
+        id possibleScrollView = [[self subviews] objectAtIndex:0];
+        if ([possibleScrollView isKindOfClass:[TiUIScrollView class]]) {
+            [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|curve animations:^{
+                TiUIScrollViewImpl* sv = [(TiUIScrollView*)possibleScrollView scrollView];
+                UIEdgeInsets newInset = sv.contentInset;
+                newInset.bottom = keyboardHeight - tabbarHeight;
+                sv.contentInset = newInset;
+                [sv setScrollIndicatorInsets:newInset];
+            } completion:^(BOOL finished) {
+            }];
+        }
+        else {
+            CGRect frame = self.frame;
+            frame.size.height = currentHeight;
+
+            [TiUtils setView:self positionRect:frame];
+            [ourProxy setHeight:NUMFLOAT(currentHeight)];
+        }
+
         if ([ourProxy _hasListeners:@"keyboard:show"]) {
             NSMutableDictionary* event = [NSMutableDictionary dictionary];
             [event setObject:NUMFLOAT(keyboardHeight) forKey:@"keyboardHeight"];
@@ -225,17 +255,31 @@
     }
     
     if (way < 2) {
-        NSMutableDictionary* anim = [NSMutableDictionary dictionary];
-        [anim setObject:NUMFLOAT(currentHeight) forKey:@"height"];
-
-        if (tabbarHeight != 0) {
-            [anim setObject:NUMFLOAT((duration * 1000) - 50) forKey:@"duration"];
+        // if the first child is a scroll view, animate the contentInset to avoid unwanted jumps
+        id possibleScrollView = [[self subviews] objectAtIndex:0];
+        if ([possibleScrollView isKindOfClass:[TiUIScrollView class]]) {
+            [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|curve animations:^{
+                TiUIScrollViewImpl* sv = [(TiUIScrollView*)possibleScrollView scrollView];
+                UIEdgeInsets newInset = sv.contentInset;
+                newInset.bottom = 0;
+                sv.contentInset = newInset;
+                [sv setScrollIndicatorInsets:newInset];
+            } completion:^(BOOL finished) {
+            }];
         }
         else {
-            [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+            NSMutableDictionary* anim = [NSMutableDictionary dictionary];
+            [anim setObject:NUMFLOAT(currentHeight) forKey:@"height"];
+            
+            if (tabbarHeight != 0) {
+                [anim setObject:NUMFLOAT((duration * 1000) - 50) forKey:@"duration"];
+            }
+            else {
+                [anim setObject:NUMFLOAT(duration * 1000) forKey:@"duration"];
+            }
+            
+            [ourProxy animate:anim];
         }
-        
-        [ourProxy animate:anim];
         
         showEvent = NO;
         [self performSelector:@selector(fireKeyboardEvent)
@@ -243,11 +287,24 @@
                    afterDelay:duration];
     }
     else {
-        CGRect frame = self.frame;
-        frame.size.height = currentHeight;
-        
-        [TiUtils setView:self positionRect:frame];
-        [ourProxy setHeight:kTiBehaviorFill];
+        id possibleScrollView = [[self subviews] objectAtIndex:0];
+        if ([possibleScrollView isKindOfClass:[TiUIScrollView class]]) {
+            [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|curve animations:^{
+                TiUIScrollViewImpl* sv = [(TiUIScrollView*)possibleScrollView scrollView];
+                UIEdgeInsets newInset = sv.contentInset;
+                newInset.bottom = 0;
+                sv.contentInset = newInset;
+                [sv setScrollIndicatorInsets:newInset];
+            } completion:^(BOOL finished) {
+            }];
+        }
+        else {
+            CGRect frame = self.frame;
+            frame.size.height = currentHeight;
+
+            [TiUtils setView:self positionRect:frame];
+            [ourProxy setHeight:kTiBehaviorFill];
+        }
         
         if ([ourProxy _hasListeners:@"keyboard:hide"]) {
             NSMutableDictionary* event = [NSMutableDictionary dictionary];

@@ -9,16 +9,10 @@ They say a picture is worth a thousand word! http://www.screenr.com/5xc8
 
 ## Using the module
 
-First require the module:
+Just create a container view where you're going to add other views (ScrollView, etc.):
 
 ```js
-var keyboardListener = require('net.iamyellow.tikeyboardlistener');
-```
-
-then create a container view where you're going to add other views (ScrollView, etc.):
-
-```js
-var container = keyboardListener.createView({
+var container = require('net.iamyellow.tikeyboardlistener').createView({
 	backgroundColor: '#fff'
 });
 ```
@@ -29,6 +23,10 @@ That view is just a common plain view, but:
 * its top is set to 0
 * you can add listeners for events 'keyboard:show' and 'keyboard:hide'
 * listener callbacks has a single argument with two properties: 'height' (the view height) and 'keyboardHeight' (need help? ;))
+
+## ScrollViews!
+
+Although it's absolutely transparent when you're just using the module, you may find interesting to know that if you add a ScrollView to the created view w/ the module, it doesn't change the view height as he would do if it were some other kind of view. Instead, it's using the contentInset property of the UIScrollView native object. That rocks because avoids weird jumping with the scroll views content offset when the keyboard appears / disappears. 
 
 ## Example
 
