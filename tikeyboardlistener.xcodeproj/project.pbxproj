@@ -30,6 +30,8 @@
 		FD4B35FD15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4B35F915AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m */; };
 		FD4B35FE15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = FD4B35FA15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h */; };
 		FD4B35FF15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4B35FB15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m */; };
+		FDB9DA771609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = FDB9DA751609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h */; };
+		FDB9DA781609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB9DA761609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		FD4B35F915AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerView.m; path = Classes/NetIamyellowTikeyboardlistenerView.m; sourceTree = "<group>"; };
 		FD4B35FA15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerViewProxy.h; path = Classes/NetIamyellowTikeyboardlistenerViewProxy.h; sourceTree = "<group>"; };
 		FD4B35FB15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerViewProxy.m; path = Classes/NetIamyellowTikeyboardlistenerViewProxy.m; sourceTree = "<group>"; };
+		FDB9DA751609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerModuleAssets.h; path = Classes/NetIamyellowTikeyboardlistenerModuleAssets.h; sourceTree = "<group>"; };
+		FDB9DA761609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerModuleAssets.m; path = Classes/NetIamyellowTikeyboardlistenerModuleAssets.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FDB9DA751609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h */,
+				FDB9DA761609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m */,
 				FD4B35F815AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.h */,
 				FD4B35F915AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m */,
 				FD4B35FA15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h */,
@@ -127,6 +133,7 @@
 				24DD6CF91134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.h in Headers */,
 				FD4B35FC15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.h in Headers */,
 				FD4B35FE15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h in Headers */,
+				FDB9DA771609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +207,7 @@
 				24DD6CFA1134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.m in Sources */,
 				FD4B35FD15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m in Sources */,
 				FD4B35FF15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m in Sources */,
+				FDB9DA781609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
