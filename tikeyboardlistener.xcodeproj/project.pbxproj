@@ -22,16 +22,16 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		24DD6CF91134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.h */; };
-		24DD6CFA1134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.m */; };
+		24DE9E1111C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.h */; };
+		24DE9E1211C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* NetIamyellowTikeyboardlistener_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* NetIamyellowTikeyboardlistener_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		FD4B35FC15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.h in Headers */ = {isa = PBXBuildFile; fileRef = FD4B35F815AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.h */; };
-		FD4B35FD15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4B35F915AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m */; };
-		FD4B35FE15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = FD4B35FA15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h */; };
-		FD4B35FF15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4B35FB15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m */; };
-		FDB9DA771609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = FDB9DA751609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h */; };
-		FDB9DA781609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB9DA761609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m */; };
+		FDE7835217E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE7834C17E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.h */; };
+		FDE7835317E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE7834D17E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.m */; };
+		FDE7835417E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE7834E17E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.h */; };
+		FDE7835517E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE7834F17E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.m */; };
+		FDE7835617E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE7835017E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.h */; };
+		FDE7835717E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE7835117E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,18 +45,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		24DD6CF71134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerModule.h; path = Classes/NetIamyellowTikeyboardlistenerModule.h; sourceTree = "<group>"; };
-		24DD6CF81134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerModule.m; path = Classes/NetIamyellowTikeyboardlistenerModule.m; sourceTree = "<group>"; };
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
+		24DE9E0F11C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerModuleAssets.h; path = Classes/NetIamyellowTikeyboardlistenerModuleAssets.h; sourceTree = "<group>"; };
+		24DE9E1011C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerModuleAssets.m; path = Classes/NetIamyellowTikeyboardlistenerModuleAssets.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* NetIamyellowTikeyboardlistener_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetIamyellowTikeyboardlistener_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libNetIamyellowTikeyboardlistener.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNetIamyellowTikeyboardlistener.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD4B35F815AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerView.h; path = Classes/NetIamyellowTikeyboardlistenerView.h; sourceTree = "<group>"; };
-		FD4B35F915AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerView.m; path = Classes/NetIamyellowTikeyboardlistenerView.m; sourceTree = "<group>"; };
-		FD4B35FA15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerViewProxy.h; path = Classes/NetIamyellowTikeyboardlistenerViewProxy.h; sourceTree = "<group>"; };
-		FD4B35FB15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerViewProxy.m; path = Classes/NetIamyellowTikeyboardlistenerViewProxy.m; sourceTree = "<group>"; };
-		FDB9DA751609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerModuleAssets.h; path = Classes/NetIamyellowTikeyboardlistenerModuleAssets.h; sourceTree = "<group>"; };
-		FDB9DA761609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerModuleAssets.m; path = Classes/NetIamyellowTikeyboardlistenerModuleAssets.m; sourceTree = "<group>"; };
+		FDE7834C17E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerModule.h; path = Classes/NetIamyellowTikeyboardlistenerModule.h; sourceTree = "<group>"; };
+		FDE7834D17E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerModule.m; path = Classes/NetIamyellowTikeyboardlistenerModule.m; sourceTree = "<group>"; };
+		FDE7834E17E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerView.h; path = Classes/NetIamyellowTikeyboardlistenerView.h; sourceTree = "<group>"; };
+		FDE7834F17E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerView.m; path = Classes/NetIamyellowTikeyboardlistenerView.m; sourceTree = "<group>"; };
+		FDE7835017E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetIamyellowTikeyboardlistenerViewProxy.h; path = Classes/NetIamyellowTikeyboardlistenerViewProxy.h; sourceTree = "<group>"; };
+		FDE7835117E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetIamyellowTikeyboardlistenerViewProxy.m; path = Classes/NetIamyellowTikeyboardlistenerViewProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +101,14 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				FDB9DA751609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h */,
-				FDB9DA761609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m */,
-				FD4B35F815AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.h */,
-				FD4B35F915AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m */,
-				FD4B35FA15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h */,
-				FD4B35FB15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m */,
-				24DD6CF71134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.h */,
-				24DD6CF81134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.m */,
+				FDE7834C17E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.h */,
+				FDE7834D17E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.m */,
+				FDE7834E17E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.h */,
+				FDE7834F17E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.m */,
+				FDE7835017E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.h */,
+				FDE7835117E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.m */,
+				24DE9E0F11C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.h */,
+				24DE9E1011C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -129,11 +129,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDE7835617E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.h in Headers */,
+				FDE7835217E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* NetIamyellowTikeyboardlistener_Prefix.pch in Headers */,
-				24DD6CF91134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.h in Headers */,
-				FD4B35FC15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.h in Headers */,
-				FD4B35FE15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.h in Headers */,
-				FDB9DA771609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.h in Headers */,
+				24DE9E1111C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.h in Headers */,
+				FDE7835417E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +162,8 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "tikeyboardlistener" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -204,10 +206,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24DD6CFA1134B3F500162E58 /* NetIamyellowTikeyboardlistenerModule.m in Sources */,
-				FD4B35FD15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerView.m in Sources */,
-				FD4B35FF15AFFEEF00C3CD5C /* NetIamyellowTikeyboardlistenerViewProxy.m in Sources */,
-				FDB9DA781609AE9600282413 /* NetIamyellowTikeyboardlistenerModuleAssets.m in Sources */,
+				24DE9E1211C5FE74003F90F6 /* NetIamyellowTikeyboardlistenerModuleAssets.m in Sources */,
+				FDE7835517E8643400B9F08B /* NetIamyellowTikeyboardlistenerView.m in Sources */,
+				FDE7835317E8643400B9F08B /* NetIamyellowTikeyboardlistenerModule.m in Sources */,
+				FDE7835717E8643400B9F08B /* NetIamyellowTikeyboardlistenerViewProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,15 +228,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DSTROOT = /tmp/NetIamyellowTikeyboardlistener.dst;
@@ -274,15 +267,6 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
 				DSTROOT = /tmp/NetIamyellowTikeyboardlistener.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
@@ -315,15 +299,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DSTROOT = /tmp/NetIamyellowTikeyboardlistener.dst;
@@ -362,15 +337,6 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
 				DSTROOT = /tmp/NetIamyellowTikeyboardlistener.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;

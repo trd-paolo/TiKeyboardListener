@@ -1,77 +1,88 @@
-// ****************************************************************************************************************
-// require lib
 
-var keyboardListener = require('net.iamyellow.tikeyboardlistener');
+var test = 'tab'; // possible values: 'win' | 'nav' | 'tab'
 
-// ****************************************************************************************************************
-// GUI setup
+(function (keyboardListener) {
+	var win, navWin, tabGroup;
+	
+	// ****************************************************************************************************************
+	// containers
 
-// window
-var win = Ti.UI.createWindow({
-	navBarHidden: true
-});
-//win.orientationModes = [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT];
+	win = Ti.UI.createWindow({
+		backgroundColor: '#fff612'
+	});
+	
+	if (test === 'nav') {
+		navWin = Ti.UI.iOS.createNavigationWindow({
+			window: win
+		});
+	}
+	else if (test === 'tab') {
+		var tab = Titanium.UI.createTab({
+			icon: 'KS_nav_views.png',
+			title: 'Tab 1',
+			window: win
+		});
+		
+		tabGroup = Titanium.UI.createTabGroup();
+		tabGroup.addTab(tab);
+	};	
 
-// the container view which should be resized
-var container = keyboardListener.createView({
-	backgroundColor: '#fff'
-});
-win.add(container);
+	// ****************************************************************************************************************
+	// window views 
+	
+	// the container view which should be resized
+	var container = keyboardListener.createView({
+		width: Ti.UI.FILL, height: Ti.UI.FILL,
+		backgroundColor: '#fff612'
+	});
+	win.add(container);
 
-// add a scroll view
-var scroll = Ti.UI.createScrollView({
-	width: Ti.UI.FILL, height: Ti.UI.FILL,
-	bottom: 40, left: 0,
-	contentHeight: 800,
-	showVerticalScrollIndicator: true
-});
-container.add(scroll);
+	// a bottom cointaner view
+	var toolbar = Ti.UI.createView({
+		width: Ti.UI.FILL, height: 40,
+		backgroundColor: '#ccc',
+		bottom: 0
+	}),
+	trigger = Ti.UI.createTextField({
+		height: 20,
+		top: 10, left: 10, right: 70,
+		backgroundColor: '#fff'
+	}),
+	blurBtn = Ti.UI.createButton({
+		width: 50, height: 20,
+		top: 10,
+		right: 10,
+		title: 'blur'
+	});
+	toolbar.add(trigger);
+	toolbar.add(blurBtn);
+	container.add(toolbar);
 
-// a bottom cointaner view
-var toolbar = Ti.UI.createView({
-	width: Ti.UI.FILL, height: 40,
-	backgroundColor: '#ccc',
-	bottom: 0
-}),
-trigger = Ti.UI.createTextField({
-	height: 20,
-	top: 10, left: 10, right: 70,
-	backgroundColor: '#fff'
-}),
-blurBtn = Ti.UI.createButton({
-	width: 50, height: 20,
-	top: 10,
-	right: 10,
-	title: 'blur'
-});
-toolbar.add(trigger);
-toolbar.add(blurBtn);
-container.add(toolbar);
+	// ****************************************************************************************************************
+	// keyboard listener stuff
 
-// ****************************************************************************************************************
-// keyboard listener stuff
+	container.addEventListener('keyboard:show', function (ev) {
+		Ti.API.info('* keyboard height is ' + ev.keyboardHeight + ', and my height is now ' + ev.height);
+	});
+	container.addEventListener('keyboard:hide', function (ev) {
+		Ti.API.info('* keyboard height was ' + ev.keyboardHeight + ', and my height is now ' + ev.height);
+	});
 
-container.addEventListener('keyboard:show', function (ev) {
-	Ti.API.info('* keyboard height is ' + ev.keyboardHeight + ', and my height is now ' + ev.height);
-});
-container.addEventListener('keyboard:hide', function (ev) {
-	Ti.API.info('* keyboard height was ' + ev.keyboardHeight + ', and my height is now ' + ev.height);
-});
+	blurBtn.addEventListener('click', function () {
+		trigger.blur();
+	});
 
-blurBtn.addEventListener('click', function () {
-	trigger.blur();
-});
-
-// ****************************************************************************************************************
-// start the show
-win.open();
-
-/*var tabGroup = Titanium.UI.createTabGroup(),
-tab = Titanium.UI.createTab({
-	icon: 'KS_nav_views.png',
-	title: 'Tab 1',
-	window: win
-});
-tabGroup.addTab(tab);
-tabGroup.open();
-*/
+	// ****************************************************************************************************************
+	// start the show
+	if (tabGroup) {
+		tabGroup.open();
+		return;
+	}
+	
+	if (navWin) {
+		navWin.open();
+		return;	
+	}
+	
+	win.open();
+})(require('net.iamyellow.tikeyboardlistener'));
